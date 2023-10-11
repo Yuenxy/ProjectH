@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Konsumen</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+    <ul class="container nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="data-konsumen-tab" data-toggle="tab" href="#data-konsumen" role="tab" aria-controls="data-konsumen" aria-selected="true">Data Konsumen</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="laporan-tab" data-toggle="tab" href="#laporan" role="tab" aria-controls="laporan" aria-selected="false">Laporan</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="informasi-tab" data-toggle="tab" href="#informasi" role="tab" aria-controls="informasi" aria-selected="false">Informasi</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="data-konsumen" role="tabpanel" aria-labelledby="data-konsumen-tab">
+            <div class="container border border-top-0">
+                <div class="row mb-2 mt-2">
+                    <div class="col">
+                        <input type="text" id="inputData" class="form-control" placeholder="Masukkan Data Konsumen" onkeyup="hitungRDSRDT()">
+                    </div>
+                    <div class="col">
+                        <button onclick="tambahData()" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="col input-group">
+                        <input type="file" id="muatInput" class="form-control" style="display: none;">
+                        <button id="muatButton" class="btn btn-primary">Muat</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container border border-top-0" style="max-height: 650px; overflow-y: scroll;">
+                <table id="dataTable" class="table table-hover mt-3">
+                    <thead>
+                        <tr>
+                            <th>Data Konsumen</th>
+                            <th>Status</th>
+                            <th>Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Tambahkan baris data di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="laporan" role="tabpanel" aria-labelledby="laporan-tab">
+            <div class="container mt">
+                <div class="row">
+                    <div class="col border border-top-0">
+                        <input type="text" class="form-control mb-2 mt-2" id="pfrds" placeholder="PENGAJUAN FAKTUR RDS">
+                        <div class="input-group">
+                            <input type="text" class="form-control mb-2" id="ftrds" placeholder="FAKTUR TERIMA RDS">
+                            
+                            <input type="text" class="form-control mb-2" id="ftrdsa" placeholder="FAKTUR TERIMA RDS">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control mb-2" id="bbnkrds" placeholder="BBN KEMARIN RDS">
+                            <input type="text" class="form-control mb-2" id="bbnhrds" placeholder="BBN HARI INI RDS">
+                        </div>
+                        <input type="text" class="form-control mb-2" id="prds" placeholder="PENDING FAKTUR RDS">
+                        <hr>
+                        <input type="text" class="form-control mb-2" id="pfrdt" placeholder="PENGAJUAN FAKTUR RDT">
+                        <div class="input-group">
+                            <input type="text" class="form-control mb-2" id="ftrdt" placeholder="FAKTUR TERIMA RDT">
+                            <input type="text" class="form-control mb-2" id="ftrdta" placeholder="FAKTUR TERIMA RDT">
+                        </div>
+                        <div class="input-group">
+                            <input type="text" class="form-control mb-2" id="bbnkrdt" placeholder="BBN KEMARIN RDT">
+                            <input type="text" class="form-control mb-2" id="bbnhrdt" placeholder="BBN HARI INI RDT">
+                        </div>
+                        <input type="text" class="form-control mb-2" id="prdt" placeholder="PENDING FAKTUR RDT">
+                    </div>
+                    <div class="col border border-top-0 border-left-0">
+                        <textarea id="output2" rows="13" cols="40" readonly class="form-control border-secondary mt-2"></textarea>
+                        
+                        <button type="button" class="btn btn-success mt-2" id="copyText" style="width: max">Copy</button>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="informasi" role="tabpanel" aria-labeledby="informasi-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col border border-top-0 border-right-0">
+                        <div class="card text-bg-light mb-3 mt-3" style="max-width: 18rem;">
+                          <div class="card-header">Enxy Project</div>
+                          <div class="card-body">
+                            <h5 class="card-title">Program</h5>
+                            <p class="card-text">Program ini masih tahap pengembangan ya bgst!!!!</p>
+                          </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col border border-top-0 border-left-0">
+                        <div class="card text-bg-light mb-3 mt-3" style="max-width: 18rem;">
+                          <div class="card-header">Enxy Project</div>
+                          <div class="card-body">
+                            <h5 class="card-title">Program</h5>
+                            <p class="card-text">Program ini masih tahap pengembangan ya bgst!!!!</p>
+                          </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark fixed-bottom">
+      <div class="container">
+        <div>
+            <button type="button" class="badge badge-warning" id="inputBadge" style="font-size: 20px;" onclick="filterTable('Input')">0</button>
+            <button type="button" class="badge badge-success" id="progressBadge" style="font-size: 20px;" onclick="filterTable('Progress')">0</button>
+            <button type="button" class="badge badge-info" id="sendBadge" style="font-size: 20px;" onclick="filterTable('Send')">0</button>
+            <button type="button" class="badge badge-danger" id="pendingBadge" style="font-size: 20px;" onclick="filterTable('Pending')">0</button>
+            <button type="button" class="badge badge-danger" id="totalDataTable" style="font-size: 20px;" onclick="resetFilter()">0</button>
+            <button id="simpanButton" class="badge badge-primary" style="font-size: 20px;">Simpan</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="io.js"></script>
+</body>
+</html>
